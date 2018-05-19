@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FreRes Restaurant</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom-Stylesheet-Links -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="all" />
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    <!-- Index-Page-Styling -->
+    <link rel="stylesheet" href="../css/owl.carousel.css" type="text/css" media="all" />
+    <!-- Owl-Carousel-CSS -->
+    <link rel="stylesheet" href="../css/popuo-box.css" type="text/css" media="all" />
+    <!-- Popup-Box-CSS -->
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <!-- font-awesome icons -->
+    <!-- //Custom-Stylesheet-Links -->
+    <!-- Web-Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <!-- //Web-Fonts -->
+
+    <style type="text/css">
+        .login-form {
+            width: 340px;
+            margin: 50px auto;
+        }
+        
+        .login-form form {
+            margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+        
+        .form-control,
+        .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+        
+        .btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="w3layouts-header">
+        <!-- Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+                    <a class="navbar-brand" href="index.html">Freres</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hover-effect active"><a href="index.html">Home</a></li>
+                        <li class="hover-effect"><a href="#menu" class="scroll">Menu</a></li>
+                        <li class="hover-effect"><a data-toggle="modal" data-target="#login" class="scroll">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- //Navbar -->
+        <!-- Slider -->
+        <div class="slider">
+            <ul class="rslides" id="slider">
+                <li>
+                    <img src="../images/1.jpg" alt="Freres">
+                </li>
+                <li>
+                    <img src="../images/2.jpg" alt="Freres">
+                </li>
+            </ul>
+        </div>
+        <!-- //Slider -->
+    </div>
+    <!-- //Header -->
+    <!-- Phiếu đặt bàn -->
+    <div class="container" style="background: plum">
+        <form class="DAT_BAN" style="margin: 10px">
+            <br>
+            <br>
+            <h2 style="color: red; font-weight: bolder">Phiếu Đặt Bàn</h2>
+            <div class="w3-agileitsline"></div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="dateSell">Ngày Đặt</label>
+                    <input type="date" name="dateSell" id="dateSell" class="form-control" />
+                </div>
+                <div class="form-group col">
+                    <label for="nameTivi">Tên Món</label>
+                    <br/>
+                    <select id="nameTivi" class="custom-select" onchange="Thay_doi_Select(Danh_sach_Mat_hang);">
+                            <option hidden>Lựa chọn món ăn cần cập nhật bán</option>
+                        </select>
+                </div>
+                <div class="form-group col">
+                    <label for="amount">Số lượng</label>
+                    <input type="number" name="amount" id="amount" class="form-control" onmouseup="updateComponent(Danh_sach_Mat_hang);" onkeyup="updateComponent(Danh_sach_Mat_hang);" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="price">Đơn Giá Bán</label>
+                    <input type="number" name="price" id="price" class="form-control" readonly/>
+                </div>
+                <div class="form-group col">
+                    <label for="money">Tiền</label>
+                    <input type="number" name="money" id="money" class="form-control" readonly/>
+                </div>
+                <div class="form-group col">
+                    <label for="totalMoney">Tổng Tiền</label>
+                    <input type="number" name="totalMoney" id="totalMoney" class="form-control" readonly/>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" onclick="Xu_ly_Ban_hang();">Đặt Bàn</button>
+        </form>
+    </div>
+
+    <!-- //Phiếu đặt bàn -->
+
+    <!-- Menu -->
+    <div class="team" id="menu">
+        <h3>Menu</h3>
+        <div class="w3-agileitsline"></div>
+        <div id="CUA_SO_KET_QUA" style="background-color:white;margin:10px">
+        </div>
+    </div>
+    <!-- //menu -->
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-info">
+                <div class="col-md-4 col-sm-4 footer-info-grid links">
+                    <h4>QUICK LINKS</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-4 footer-info-grid address">
+                    <h4>ADDRESS</h4>
+                    <address>
+						<ul>
+							<li>FreRes Restaurant</li>
+							<li>227 Nguyễn Văn Cừ, Quận 5</li>
+							<li>Thành phố Hồ Chí Minh</li>
+							<li>Điện thoại : +84 123456789</li>
+							<li>Email : <a class="mail" href="mailto:fresres@example.com">info@example.com</a></li>
+						</ul>
+					</address>
+                </div>
+                <div class="col-md-4 col-sm-4 footer-info-grid email">
+                    <h4>NEWSLETTER</h4>
+                    <p>Subscribe to our newsletter and we will inform you about newest projects and promotions. </p>
+
+                    <form action="#" method="post" class="newsletter">
+                        <input class="email" type="email" placeholder="Your email..." required="">
+                        <input type="submit" class="submit" value="">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="connect">
+                <div class="connect-social">
+                    <h4>CONNECT</h4>
+                    <ul>
+                        <li><a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-vimeo"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-pinterest-p"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-flickr"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="#" class="social-button google"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2018 Freres. All Rights Reserved | Design by <a href="index.html"> FresRes </a></p>
+            </div>
+        </div>
+    </div>
+    <!--Log in-->
+    <div class="modal login-form" id="login">
+        <form action="/" method="post">
+            <h2 class="text-center">Log in</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                <a href="#" class="pull-right">Forgot Password?</a>
+            </div>
+        </form>
+        <p class="text-center"><a href="#">Create an Account</a></p>
+    </div>
+    <!-- //Footer -->
+    <!-- Custom-JavaScript-File-Links -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- Supportive-JavaScript -->
+    <!-- Banner-Slider-JavaScript -->
+    <script src="../js/responsiveslides.min.js"></script>
+    <script>
+        $(function() {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 800,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+    </script>
+    <!-- //Banner-Slider-JavaScript -->
+    <!-- Owl-Carousel-JavaScript -->
+    <script src="../js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+                items: 4,
+                lazyLoad: true,
+                autoPlay: true,
+                pagination: false,
+            });
+        });
+    </script>
+    <!-- //Owl-Carousel-JavaScript -->
+
+    <!-- Magnific-Popup-Display-JavaScript -->
+    <script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+        });
+    </script>
+    <!-- //Magnific-Popup-Display-JavaScript -->
+
+    <!-- Progressive-Effects-Animation-JavaScript -->
+    <script type="text/javascript" src="../js/jquery.inview.min.js"></script>
+    <script type="text/javascript" src="../js/wow.min.js"></script>
+    <script type="text/javascript" src="../js/mousescroll.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/numscroller-1.0.js"></script>
+    <!-- //Progressive-Effects-Animation-JavaScript -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript" src="../js/move-top.js"></script>
+    <script type="text/javascript" src="../js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+            	containerID: 'toTop', // fading element id
+            	containerHoverID: 'toTopHover', // fading element hover id
+            	scrollSpeed: 1200,
+            	easingType: 'linear' 
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+    <script src="../XU_LY/XU_LY.js"></script>
+
+    <!-- XỬ LÍ -->
+    <script>
+        //*************** Biến dùng chung  ************
+        var Danh_sach_Mat_hang = []
+        var Danh_sach_Mat_hang_Xem = []
+            //*************** Biến Cố Khởi động  ************
+        function Xu_ly_Khoi_dong() {
+            Danh_sach_Mat_hang = Doc_Danh_sach_Mat_hang()
+            Danh_sach_Mat_hang_Xem = Danh_sach_Mat_hang
+
+            var Chuoi_HTML_Danh_sach_Mat_hang =
+                Tao_Chuoi_HTML_Danh_sach_Mat_hang(Danh_sach_Mat_hang_Xem)
+            Chuoi_HTML_Ket_qua = Chuoi_HTML_Danh_sach_Mat_hang
+            CUA_SO_KET_QUA.innerHTML = Chuoi_HTML_Ket_qua
+        }
+
+        //*************** Biến Cố Yêu cầu Tra cứu  ************
+        //PET : Để Đơn giản hóa khi Minh họa 
+        // Hiện nay Tra cứu trực tiếp khi người dùng nhấn phím 
+        // và không loại các kỳ tự điều khiển
+        // Thực tế cần  loại ký tự điều khiển hay Chỉ Xử lý với phím Enter
+        function Xu_ly_Tra_cuu() {
+            // Nhập liệu
+            var Chuoi_Tra_cuu = Th_Chuoi_Tra_cuu.value
+                // Xử lý Tão Kết quả 
+            Danh_sach_Mat_hang_Xem = Tra_cuu_Mat_hang(Chuoi_Tra_cuu, Danh_sach_Mat_hang)
+                // Kết xuất Kết quả 
+            var Chuoi_HTML_Danh_sach_Mat_hang =
+                Tao_Chuoi_HTML_Danh_sach_Mat_hang(Danh_sach_Mat_hang_Xem)
+
+            CUA_SO_KET_QUA.innerHTML = Chuoi_HTML_Danh_sach_Mat_hang
+        }
+
+        //*************** Biến Cố Bán Hàng  ************
+        function Xu_ly_Ban_hang() {
+            // Thêm dữ liệu vào xml
+            Danh_sach_Mat_hang = Kiem_tra_Du_lieu_va_Ban_hang(Danh_sach_Mat_hang);
+
+            Danh_sach_Mat_hang_Xem = Danh_sach_Mat_hang;
+
+            // Kết xuất Kết quả 
+            var Chuoi_HTML_Danh_sach_Mat_hang =
+                Tao_Chuoi_HTML_Danh_sach_Mat_hang(Danh_sach_Mat_hang_Xem)
+            Chuoi_HTML_Ket_qua = Chuoi_HTML_Danh_sach_Mat_hang
+            CUA_SO_KET_QUA.innerHTML = Chuoi_HTML_Ket_qua
+        }
+    </script>
+    <!-- Necessary-JS-File-For-Bootstrap -->
+
+
+</body>
+
+</html>
